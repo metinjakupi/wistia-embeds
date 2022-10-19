@@ -11,48 +11,30 @@ var propTypes__default = /*#__PURE__*/_interopDefaultLegacy(propTypes);
 
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
-
   if (Object.getOwnPropertySymbols) {
     var symbols = Object.getOwnPropertySymbols(object);
-
-    if (enumerableOnly) {
-      symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      });
-    }
-
-    keys.push.apply(keys, symbols);
+    enumerableOnly && (symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    })), keys.push.apply(keys, symbols);
   }
-
   return keys;
 }
-
 function _objectSpread2(target) {
   for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
+    var source = null != arguments[i] ? arguments[i] : {};
+    i % 2 ? ownKeys(Object(source), !0).forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) {
+      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+    });
   }
-
   return target;
 }
-
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
-
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
@@ -62,13 +44,14 @@ function _defineProperties(target, props) {
     Object.defineProperty(target, descriptor.key, descriptor);
   }
 }
-
 function _createClass(Constructor, protoProps, staticProps) {
   if (protoProps) _defineProperties(Constructor.prototype, protoProps);
   if (staticProps) _defineProperties(Constructor, staticProps);
+  Object.defineProperty(Constructor, "prototype", {
+    writable: false
+  });
   return Constructor;
 }
-
 function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -80,15 +63,12 @@ function _defineProperty(obj, key, value) {
   } else {
     obj[key] = value;
   }
-
   return obj;
 }
-
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
     throw new TypeError("Super expression must either be null or a function");
   }
-
   subClass.prototype = Object.create(superClass && superClass.prototype, {
     constructor: {
       value: subClass,
@@ -96,30 +76,28 @@ function _inherits(subClass, superClass) {
       configurable: true
     }
   });
+  Object.defineProperty(subClass, "prototype", {
+    writable: false
+  });
   if (superClass) _setPrototypeOf(subClass, superClass);
 }
-
 function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
     return o.__proto__ || Object.getPrototypeOf(o);
   };
   return _getPrototypeOf(o);
 }
-
 function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
     o.__proto__ = p;
     return o;
   };
-
   return _setPrototypeOf(o, p);
 }
-
 function _isNativeReflectConstruct() {
   if (typeof Reflect === "undefined" || !Reflect.construct) return false;
   if (Reflect.construct.sham) return false;
   if (typeof Proxy === "function") return true;
-
   try {
     Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
     return true;
@@ -127,66 +105,50 @@ function _isNativeReflectConstruct() {
     return false;
   }
 }
-
 function _assertThisInitialized(self) {
   if (self === void 0) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
-
   return self;
 }
-
 function _possibleConstructorReturn(self, call) {
   if (call && (typeof call === "object" || typeof call === "function")) {
     return call;
   } else if (call !== void 0) {
     throw new TypeError("Derived constructors may only return object or undefined");
   }
-
   return _assertThisInitialized(self);
 }
-
 function _createSuper(Derived) {
   var hasNativeReflectConstruct = _isNativeReflectConstruct();
-
   return function _createSuperInternal() {
     var Super = _getPrototypeOf(Derived),
-        result;
-
+      result;
     if (hasNativeReflectConstruct) {
       var NewTarget = _getPrototypeOf(this).constructor;
-
       result = Reflect.construct(Super, arguments, NewTarget);
     } else {
       result = Super.apply(this, arguments);
     }
-
     return _possibleConstructorReturn(this, result);
   };
 }
-
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
-
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
-
 function _iterableToArrayLimit(arr, i) {
   var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-
   if (_i == null) return;
   var _arr = [];
   var _n = true;
   var _d = false;
-
   var _s, _e;
-
   try {
     for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
       _arr.push(_s.value);
-
       if (i && _arr.length === i) break;
     }
   } catch (err) {
@@ -199,10 +161,8 @@ function _iterableToArrayLimit(arr, i) {
       if (_d) throw _e;
     }
   }
-
   return _arr;
 }
-
 function _unsupportedIterableToArray(o, minLen) {
   if (!o) return;
   if (typeof o === "string") return _arrayLikeToArray(o, minLen);
@@ -211,15 +171,11 @@ function _unsupportedIterableToArray(o, minLen) {
   if (n === "Map" || n === "Set") return Array.from(o);
   if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
 }
-
 function _arrayLikeToArray(arr, len) {
   if (len == null || len > arr.length) len = arr.length;
-
   for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
   return arr2;
 }
-
 function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
@@ -239,42 +195,33 @@ function isUndefined(value) {
 // account for this, if the key is videoFoam and the value is an object, we
 // assume it should be serialized to JSON rather than coerced to string as we do
 // for all other values.
+
 function serializeOptionEntry(_ref) {
   var _ref2 = _slicedToArray(_ref, 2),
-      key = _ref2[0],
-      value = _ref2[1];
-
+    key = _ref2[0],
+    value = _ref2[1];
   if (key === 'videoFoam' && Object(value) === value) {
     value = JSON.stringify(value);
   }
-
   return "".concat(key, "=").concat(encodeURIComponent(value));
 }
 
 var CHANNEL_OPTION_KEYS = new Set(['embedHost', 'hashedId', 'height', 'heroImageAspectRatio', 'heroImageUrl', 'id', 'mode', 'width']);
 var WistiaChannel = /*#__PURE__*/function (_Component) {
   _inherits(WistiaChannel, _Component);
-
   var _super = _createSuper(WistiaChannel);
-
   function WistiaChannel() {
     var _this;
-
     _classCallCheck(this, WistiaChannel);
-
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
-
     _this = _super.call.apply(_super, [this].concat(args));
-
     _defineProperty(_assertThisInitialized(_this), "state", {
       safeToRender: false
     });
-
     return _this;
   }
-
   _createClass(WistiaChannel, [{
     key: "classNames",
     get: function get() {
@@ -318,16 +265,14 @@ var WistiaChannel = /*#__PURE__*/function (_Component) {
       }) : null;
     }
   }]);
-
   return WistiaChannel;
-}(react.Component); ////////////////////////////////////////////////////////////////////////////////
+}(react.Component);
 
+////////////////////////////////////////////////////////////////////////////////
 _defineProperty(WistiaChannel, "contextType", WistiaContext);
-
 _defineProperty(WistiaChannel, "defaultProps", {
   mode: 'inline'
 });
-
 _defineProperty(WistiaChannel, "propTypes", {
   embedHost: propTypes__default["default"].string,
   hashedId: propTypes__default["default"].string.isRequired,
@@ -338,20 +283,21 @@ _defineProperty(WistiaChannel, "propTypes", {
   mode: propTypes__default["default"].string,
   width: propTypes__default["default"].number
 });
-
 function isWistiaChannelOptionEntry(_ref) {
   var _ref2 = _slicedToArray(_ref, 2),
-      key = _ref2[0],
-      value = _ref2[1];
-
+    key = _ref2[0],
+    value = _ref2[1];
   return CHANNEL_OPTION_KEYS.has(key) && !isUndefined(value);
 }
 
 var DEFAULT_ASPECT_RATIO = 640 / 360;
 var PLAYER_OPTION_KEYS = new Set(['autoPlay', 'chromeless', 'controlsVisibleOnLoad', 'doNotTrack', 'email', 'embedHost', 'endVideoBehavior', 'fullscreenButton', 'googleAnalytics', 'hashedId', 'height', 'hls', 'id', 'idType', 'muted', 'playbackRateControl', 'playbar', 'playButton', 'playerColor', 'playlistLinks', 'playlistLoop', 'playPauseNotifier', 'popover', 'popoverAnimateThumbnail', 'popoverContent', 'popoverOverlayOpacity', 'preload', 'qualityControl', 'qualityMax', 'qualityMin', 'resumable', 'seo', 'settingsControl', 'silentAutoPlay', 'smallPlayButton', 'stillUrl', 'time', 'videoFoam', 'volume', 'volumeControl', 'width', 'wmode']);
-var PLAYER_EVENT_KEYS = new Set(['onAfterReplace', 'onBeforeRemove', 'onBeforeReplace', // 'onBetweenTimes',
-'onCancelFullscreen', 'onCaptionsChange', 'onConversion', // 'onCrosstime',
+var PLAYER_EVENT_KEYS = new Set(['onAfterReplace', 'onBeforeRemove', 'onBeforeReplace',
+// 'onBetweenTimes',
+'onCancelFullscreen', 'onCaptionsChange', 'onConversion',
+// 'onCrosstime',
 'onEnd', 'onEnterFullscreen', 'onHeightChange', 'onLookChange', 'onMuteChange', 'onPause', 'onPercentWatchedChanged', 'onPlay', 'onPlaybackRateChange', 'onSecondChange', 'onSeek', 'onSilentPlaybackModeChange', 'onTimeChange', 'onVolumeChange', 'onWidthChange']);
+
 /**
  * Takes in an event name (one from the list of PLAYER_EVENT_KEYS)
  * and returns an event in the format that Player expects.
@@ -360,37 +306,26 @@ var PLAYER_EVENT_KEYS = new Set(['onAfterReplace', 'onBeforeRemove', 'onBeforeRe
  *
  * @param {string} event
  */
-
 function normalizeEventForPlayer() {
   var eventKey = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
   return eventKey.replace('on', '').toLowerCase();
 }
-
 var WistiaPlayer = /*#__PURE__*/function (_Component) {
   _inherits(WistiaPlayer, _Component);
-
   var _super = _createSuper(WistiaPlayer);
-
   function WistiaPlayer() {
     var _this;
-
     _classCallCheck(this, WistiaPlayer);
-
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
-
     _this = _super.call.apply(_super, [this].concat(args));
-
     _defineProperty(_assertThisInitialized(_this), "player", null);
-
     _defineProperty(_assertThisInitialized(_this), "state", {
       safeToRender: false
     });
-
     _defineProperty(_assertThisInitialized(_this), "setupPlayerAfterReady", function (player) {
       var _this$context$dispatc, _this$context;
-
       (_this$context$dispatc = (_this$context = _this.context).dispatch) === null || _this$context$dispatc === void 0 ? void 0 : _this$context$dispatc.call(_this$context, {
         type: 'add-wistia-player',
         payload: {
@@ -398,13 +333,10 @@ var WistiaPlayer = /*#__PURE__*/function (_Component) {
           hashedId: _this.props.hashedId
         }
       });
-
       _this.setupEventBindings(player);
     });
-
     return _this;
   }
-
   _createClass(WistiaPlayer, [{
     key: "classNames",
     get: function get() {
@@ -489,8 +421,9 @@ var WistiaPlayer = /*#__PURE__*/function (_Component) {
         height: this.cssHeightValue,
         width: this.cssWidthValue
       }, this.props.style);
-    } //-- React Lifecycle Methods --//
+    }
 
+    //-- React Lifecycle Methods --//
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
@@ -529,7 +462,6 @@ var WistiaPlayer = /*#__PURE__*/function (_Component) {
       if (nextProps.hashedId !== this.props.hashedId) {
         return true;
       }
-
       return !this.state.safeToRender;
     }
   }, {
@@ -540,12 +472,11 @@ var WistiaPlayer = /*#__PURE__*/function (_Component) {
       // It would also be incorrect to call dispatch inside the render method, so we avoid doing that and
       // instead use the bound head manager methods directly
       this.context.wistiaContext.addVideoId(this.props.hashedId);
-
       if (!this.state.safeToRender) {
         return null;
-      } // if videoFoam, return a responsive embed, otherwise a fixed embed
+      }
 
-
+      // if videoFoam, return a responsive embed, otherwise a fixed embed
       if (this.props.videoFoam) {
         console.log('rendering');
         return /*#__PURE__*/react.createElement("div", {
@@ -572,15 +503,17 @@ var WistiaPlayer = /*#__PURE__*/function (_Component) {
           href: "#"
         }, this.props.children) : ' ');
       }
-    } //-- Player events --//
+    }
 
+    //-- Player events --//
   }, {
     key: "onBeforeReplace",
     value: function onBeforeReplace(hashedId) {
       this.removeEventBindings();
       this.prepareForPlayerSetup(hashedId);
-    } //-- Helper Methods -- //
+    }
 
+    //-- Helper Methods -- //
   }, {
     key: "removeEventBindings",
     value: function removeEventBindings(player) {
@@ -590,7 +523,6 @@ var WistiaPlayer = /*#__PURE__*/function (_Component) {
         });
         player.unbind('beforereplace');
         window._wq = window._wq || [];
-
         window._wq.push({
           revoke: this.initConfigOptions
         });
@@ -600,45 +532,39 @@ var WistiaPlayer = /*#__PURE__*/function (_Component) {
     key: "setupEventBindings",
     value: function setupEventBindings(player) {
       var _this2 = this;
-
       var bindToEvent = function bindToEvent(event, handler) {
         var normalizedEventName = normalizeEventForPlayer(event);
         player.bind(normalizedEventName, function () {
           var _this2$event;
-
           for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
             args[_key2] = arguments[_key2];
           }
-
           // execute handler if it's an event we care about
-          (_this2$event = _this2[event]) === null || _this2$event === void 0 ? void 0 : _this2$event.call.apply(_this2$event, [_this2].concat(args)); // execute handler for event if it was passed in as a prop
+          (_this2$event = _this2[event]) === null || _this2$event === void 0 ? void 0 : _this2$event.call.apply(_this2$event, [_this2].concat(args));
 
+          // execute handler for event if it was passed in as a prop
           handler === null || handler === void 0 ? void 0 : handler.apply(void 0, args);
         });
-      }; // bind to all possible events that the player emits
+      };
+
+      // bind to all possible events that the player emits
       // and forward them off to any functions that may have
       // been passed in as props
-
-
       PLAYER_EVENT_KEYS.forEach(function (event) {
         return bindToEvent(event, function () {
           var _this2$props$event, _this2$props;
-
           for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
             args[_key3] = arguments[_key3];
           }
-
           return (_this2$props$event = (_this2$props = _this2.props)[event]) === null || _this2$props$event === void 0 ? void 0 : _this2$props$event.call.apply(_this2$props$event, [_this2$props].concat(args));
         });
       });
-
       if (this.props.customEvents) {
         // bind to any custom events the user may have passed in
         Object.entries(this.props.customEvents).forEach(function (_ref) {
           var _ref2 = _slicedToArray(_ref, 2),
-              key = _ref2[0],
-              value = _ref2[1];
-
+            key = _ref2[0],
+            value = _ref2[1];
           bindToEvent(key, value);
         });
       }
@@ -647,13 +573,10 @@ var WistiaPlayer = /*#__PURE__*/function (_Component) {
     key: "prepareForPlayerSetup",
     value: function prepareForPlayerSetup(hashedId) {
       var _this3 = this;
-
       var handleEvent = function handleEvent(event, player) {
         var _this3$props$event, _this3$props;
-
         (_this3$props$event = (_this3$props = _this3.props)[event]) === null || _this3$props$event === void 0 ? void 0 : _this3$props$event.call(_this3$props, player);
       };
-
       this.initConfigOptions = {
         id: hashedId,
         onEmbedded: function onEmbedded(player) {
@@ -665,26 +588,22 @@ var WistiaPlayer = /*#__PURE__*/function (_Component) {
         },
         onReady: function onReady(player) {
           handleEvent('onReady', player);
-
           _this3.setupPlayerAfterReady(player);
         },
         options: this.props.customOptions ? this.props.customOptions : {}
       };
       window._wq = window._wq || [];
-
       window._wq.push(this.initConfigOptions);
     }
   }]);
-
   return WistiaPlayer;
-}(react.Component); ////////////////////////////////////////////////////////////////////////////////
+}(react.Component);
 
+////////////////////////////////////////////////////////////////////////////////
 _defineProperty(WistiaPlayer, "contextType", WistiaContext);
-
 _defineProperty(WistiaPlayer, "defaultProps", {
   videoFoam: true
 });
-
 _defineProperty(WistiaPlayer, "propTypes", {
   autoPlay: propTypes__default["default"].bool,
   chromeless: propTypes__default["default"].bool,
@@ -736,17 +655,16 @@ _defineProperty(WistiaPlayer, "propTypes", {
   width: propTypes__default["default"].number,
   wmode: propTypes__default["default"].string
 });
-
 function isWistiaPlayerOptionEntry(_ref3) {
   var _ref4 = _slicedToArray(_ref3, 2),
-      key = _ref4[0],
-      value = _ref4[1];
-
+    key = _ref4[0],
+    value = _ref4[1];
   return PLAYER_OPTION_KEYS.has(key) && !isUndefined(value);
 }
 
 // This is the most primitive and generic ToString operation. It differs
 // slightly from String(value) in that it refuses to coerce Symbols.
+
 function toString(value) {
   return "".concat(value);
 }
@@ -755,12 +673,12 @@ function toString(value) {
 // baking it into the selector because HTMLScriptElement.prototype.src will be
 // the canonicalized URL. The serialized HTML src attribute value may not be in
 // canonical form.
+
 function addScriptIfAbsent(src) {
   var scripts = Array.from(document.getElementsByTagName('script'));
   var script = Object.assign(document.createElement('script'), {
     src: src
   });
-
   if (scripts.every(function (existingScript) {
     return existingScript.src !== script.src;
   })) {
@@ -772,19 +690,17 @@ var defineProperties = Object.defineProperties;
 
 var getOwnPropertyDescriptors = Object.getOwnPropertyDescriptors;
 
+// Coerce URL origin string. Allows for but fixes empty pathname and ensures
 // canonicalization.
 
 function toOrigin(origin) {
   origin = toString(origin);
-
   try {
     var url = new URL(origin);
-
     if (url.href === "".concat(url.origin, "/")) {
       return url.origin;
     }
   } catch (_unused) {}
-
   throw new URIError("".concat(JSON.stringify(origin), " is not a valid URL origin"));
 }
 
@@ -793,12 +709,14 @@ function toURL(url) {
 }
 
 var DEFAULT_HREF = location.href ,
-    DEFAULT_ORIGIN = 'https://fast.wistia.net';
+  DEFAULT_ORIGIN = 'https://fast.wistia.net';
 var CHANNEL_PARAM = 'wgalleryid',
-    CHANNEL_VIDEO_PARAM = 'wvideoid',
-    LOADER_PARAM = 'e-v1-loader';
+  CHANNEL_VIDEO_PARAM = 'wvideoid',
+  LOADER_PARAM = 'e-v1-loader';
 var ORIGIN_K = Symbol(),
-    URL_K = Symbol(); ////////////////////////////////////////////////////////////////////////////////
+  URL_K = Symbol();
+
+////////////////////////////////////////////////////////////////////////////////
 //
 // The HeadManager implementation branches depending on whether we’re in the
 // client or in node. The common facets of the API are defined here, and then we
@@ -819,28 +737,19 @@ var ORIGIN_K = Symbol(),
 var HeadManager = /*#__PURE__*/function () {
   function HeadManager(_ref) {
     var _ref$href = _ref.href,
-        href = _ref$href === void 0 ? DEFAULT_HREF : _ref$href,
-        _ref$origin = _ref.origin,
-        origin = _ref$origin === void 0 ? DEFAULT_ORIGIN : _ref$origin;
-
+      href = _ref$href === void 0 ? DEFAULT_HREF : _ref$href,
+      _ref$origin = _ref.origin,
+      origin = _ref$origin === void 0 ? DEFAULT_ORIGIN : _ref$origin;
     _classCallCheck(this, HeadManager);
-
     _defineProperty(this, ORIGIN_K, DEFAULT_ORIGIN);
-
     _defineProperty(this, URL_K, undefined);
-
     _defineProperty(this, "channelIds", new Set());
-
     _defineProperty(this, "exposedResult", undefined);
-
     _defineProperty(this, "headResult", undefined);
-
     _defineProperty(this, "videoIds", new Set());
-
     this.origin = origin;
     this.url = href;
   }
-
   _createClass(HeadManager, [{
     key: "activeChannelProjectHashedId",
     get: function get() {
@@ -896,9 +805,10 @@ var HeadManager = /*#__PURE__*/function () {
       }
     }
   }]);
-
   return HeadManager;
-}(); // BROWSER /////////////////////////////////////////////////////////////////////
+}();
+
+// BROWSER /////////////////////////////////////////////////////////////////////
 //
 // In the client, we’re not interested in the IDs themselves, only the fact that
 // an embed of a particular type has appeared. The appearance of a channel or
@@ -920,7 +830,6 @@ var HeadManager = /*#__PURE__*/function () {
     function _class() {
       _classCallCheck(this, _class);
     }
-
     _createClass(_class, [{
       key: "addChannelId",
       value: function addChannelId() {
@@ -943,48 +852,42 @@ var HeadManager = /*#__PURE__*/function () {
         return Promise.reject(new Error('WistiaContext.finalize is SSR-only'));
       }
     }]);
-
     return _class;
   }().prototype));
-} // NODE ////////////////////////////////////////////////////////////////////////
+}
 
+// Use a ref here to maintain the same functionality as the original
 // class-based component.
-
 function useHeadManager(_ref) {
   var href = _ref.href,
-      origin = _ref.origin;
+    origin = _ref.origin;
   var headManager = react.useRef(new HeadManager({
     href: href,
     origin: origin
   }));
   return headManager.current;
 }
-
 var initialState = {
   players: {}
 };
 function WistiaProvider(props) {
   var children = props.children,
-      _props$context = props.context,
-      context = _props$context === void 0 ? {} : _props$context,
-      href = props.href,
-      origin = props.origin;
-
+    _props$context = props.context,
+    context = _props$context === void 0 ? {} : _props$context,
+    href = props.href,
+    origin = props.origin;
   var _useReducer = react.useReducer(reducer, initialState),
-      _useReducer2 = _slicedToArray(_useReducer, 2),
-      state = _useReducer2[0],
-      dispatch = _useReducer2[1];
-
+    _useReducer2 = _slicedToArray(_useReducer, 2),
+    state = _useReducer2[0],
+    dispatch = _useReducer2[1];
   var _useState = react.useState(undefined),
-      _useState2 = _slicedToArray(_useState, 2),
-      wistiaContext = _useState2[0],
-      setWistiaContext = _useState2[1];
-
+    _useState2 = _slicedToArray(_useState, 2),
+    wistiaContext = _useState2[0],
+    setWistiaContext = _useState2[1];
   var headManager = useHeadManager({
     href: href,
     origin: origin
   });
-
   function reducer(state, action) {
     switch (action.type) {
       case 'prepare-for-channel':
@@ -992,13 +895,11 @@ function WistiaProvider(props) {
           headManager === null || headManager === void 0 ? void 0 : headManager.addChannelId(action.payload.hashedId);
           return state;
         }
-
       case 'prepare-for-player':
         {
           headManager === null || headManager === void 0 ? void 0 : headManager.addVideoId(action.payload.hashedId);
           return state;
         }
-
       case 'add-wistia-player':
         {
           state.players[action.payload.hashedId] = action.payload.player;
@@ -1006,7 +907,6 @@ function WistiaProvider(props) {
             players: _objectSpread2({}, state.players)
           });
         }
-
       case 'remove-wistia-player':
         {
           delete state.players[action.payload.hashedId];
@@ -1014,14 +914,12 @@ function WistiaProvider(props) {
             players: _objectSpread2({}, state.players)
           };
         }
-
       default:
         {
           throw new Error("Unhandled action type: ".concat(action.type));
         }
     }
   }
-
   if (props.context !== wistiaContext) {
     Object.defineProperties(context, _defineProperty({
       addChannelId: {
@@ -1041,7 +939,6 @@ function WistiaProvider(props) {
     }));
     setWistiaContext(context);
   }
-
   var value = {
     state: state,
     dispatch: dispatch,
@@ -1051,20 +948,18 @@ function WistiaProvider(props) {
     value: value
   }, children);
 }
+
 /**
  * A way to access the player API from any component that is a child
  * of a WistiaProvider.
  *
  * @param {string} hashedId - the hashed id of the player you want to use
  */
-
 function usePlayer(hashedId) {
   var context = react.useContext(WistiaContext);
-
   if (context === undefined) {
     throw new Error('usePlayer must be used within a WistiaProvider');
   }
-
   return context.state.players[hashedId];
 }
 
